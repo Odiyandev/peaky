@@ -93,8 +93,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                     [
-                        InlineKeyboardButton("𝙶𝚁𝙾𝚄𝙿", url="https://youtube.com/channel/UCf_dVNrilcT0V2R--HbYpMA"),
-                        InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻", url="https://youtube.com/channel/UCf_dVNrilcT0V2R--HbYpMA")                        
+                        InlineKeyboardButton("𝙶𝚁𝙾𝚄𝙿", url="https://t.me/+0i9k0q9Uv4RkMTg1"),
+                        InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻", url="https://t.me/+J_GTXBS3AohiMDU1")                        
                     ],
                     [
                         InlineKeyboardButton("𝙰𝙱𝙾𝚄𝚃", callback_data = "about"),
