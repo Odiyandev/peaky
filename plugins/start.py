@@ -78,11 +78,14 @@ async def start_command(client: Client, message: Message):
                 reply_markup = None
 
             try:
-                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
-                await asyncio.sleep(0.5)
+                k=await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
+                await asyncio.sleep(time)
+                await k.delete()
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
+                k=await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup  = reply_markup)
+                await asyncio.sleep(time)
+                await k.delete()
             except:
                 pass
         return
@@ -90,7 +93,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                     [
-                        InlineKeyboardButton("𝚂𝚄𝙱𝚂𝙲𝚁𝙸𝙱𝙴", url="https://youtube.com/channel/UCf_dVNrilcT0V2R--HbYpMA")                        
+                        InlineKeyboardButton("𝙶𝚁𝙾𝚄𝙿", url="https://youtube.com/channel/UCf_dVNrilcT0V2R--HbYpMA"),
+                        InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻", url="https://youtube.com/channel/UCf_dVNrilcT0V2R--HbYpMA")                        
                     ],
                     [
                         InlineKeyboardButton("𝙰𝙱𝙾𝚄𝚃", callback_data = "about"),
