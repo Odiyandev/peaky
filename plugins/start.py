@@ -80,7 +80,7 @@ async def start_command(client: Client, message: Message):
             try:                
                 k=await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
                 dl_ids.append(k.id)
-                await asyncio.sleep(0.5)
+                await asyncio.sleep()
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 k=await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
@@ -88,7 +88,7 @@ async def start_command(client: Client, message: Message):
                 
             except:
                 pass
-        await asyncio.sleep(600)
+        await asyncio.sleep()
         await client.delete_messages(message.chat.id, dl_ids)
         return
     else:
