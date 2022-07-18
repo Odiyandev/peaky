@@ -64,7 +64,7 @@ async def start_command(client: Client, message: Message):
             await message.reply_text("𝚂𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚠𝚎𝚗𝚝 𝚠𝚛𝚘𝚗𝚐..!")
             return
         await temp_msg.delete()
-
+        dl_ids = []
         for msg in messages:
 
             if bool(CUSTOM_CAPTION) & bool(msg.document):
