@@ -88,9 +88,9 @@ for msg in messages:
                 
             except:
                 pass
-            await asyncio.sleep(10)
+            await asyncio.sleep(11)
             await client.delete_messages(message.chat.id, dl_ids)
-        return
+            return
     else:
         reply_markup = InlineKeyboardMarkup(
             [
