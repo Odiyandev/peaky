@@ -88,9 +88,9 @@ async def start_command(client: Client, message: Message):
                 
             except:
                 pass
-            await asyncio.sleep(600)
-            await client.delete_messages(message.chat.id, dl_ids)
-            return
+        await asyncio.sleep(600)
+        await client.delete_messages(message.chat.id, dl_ids)
+        return
     else:
         reply_markup = InlineKeyboardMarkup(
             [
