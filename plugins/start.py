@@ -4,6 +4,8 @@ import asyncio
 from pyrogram import Client, filters, __version__
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from datetime import datetime, timedelta
 
 from bot import Bot
 from config import ADMINS, FORCE_MSG, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON
@@ -19,9 +21,11 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 
 #=====================================================================================##
 
+scheduler = AsyncIOScheduler()
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
+    global ti
     id = message.from_user.id
     user_name = '@' + message.from_user.username if message.from_user.username else None
     try:
@@ -85,12 +89,10 @@ async def start_command(client: Client, message: Message):
                 await asyncio.sleep(e.x)
                 k=await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
                 dl_ids.append(k.id)
-                
             except:
                 pass
-            await asyncio.sleep(10)
-            await k.delete()
-        print(dl_ids)
+                ti = datetime.now() + timedelta(seconds = 1800)
+                scheduler.add_job(k.delete, 'date', run_date = ti)
         await asyncio.sleep()
         await client.delete_messages(message.chat.id, dl_ids)
         return
@@ -205,3 +207,5 @@ async def send_text(client: Bot, message: Message):
         msg = await message.reply(REPLY_ERROR)
         await asyncio.sleep(8)
         await msg.delete()
+
+scheduler.start()
