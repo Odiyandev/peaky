@@ -18,7 +18,7 @@ WAIT_MSG = """"<b>Processing ...</b>"""
 REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
 
 #=====================================================================================##
-
+dl_ids = []
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -64,7 +64,7 @@ async def start_command(client: Client, message: Message):
             await message.reply_text("𝚂𝚘𝚖𝚎𝚝𝚑𝚒𝚗𝚐 𝚠𝚎𝚗𝚝 𝚠𝚛𝚘𝚗𝚐..!")
             return
         await temp_msg.delete()
-        dl_ids = []
+       # dl_ids = []
         for msg in messages:
 
             if bool(CUSTOM_CAPTION) & bool(msg.document):
@@ -88,11 +88,11 @@ async def start_command(client: Client, message: Message):
                 
             except:
                 pass
-            await asyncio.sleep(10)
-            await k.delete()
-        print(dl_ids)
-        await asyncio.sleep()
-        await client.delete_messages(message.chat.id, dl_ids)
+        await asyncio.sleep(10)
+        await k.delete()
+      #  print(dl_ids)
+      #  await asyncio.sleep()
+      #  await client.delete_messages(message.chat.id, dl_ids)
         return
     else:
         reply_markup = InlineKeyboardMarkup(
