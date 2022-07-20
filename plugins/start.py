@@ -87,6 +87,8 @@ async def start_command(client: Client, message: Message):
                 dl_ids.append(k.id)
                 
             except:
+                await asyncio.sleep(10)
+                await k.delete()
                 pass
         await asyncio.sleep()
         await client.delete_messages(message.chat.id, dl_ids)
