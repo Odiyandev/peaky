@@ -91,7 +91,7 @@ async def start_command(client: Client, message: Message):
                 dl_ids.append(k.id)
             except:
                 pass
-                ti = datetime.now() + timedelta(seconds = 10)
+                ti = datetime.now() + timedelta(seconds = 60)
                 scheduler.add_job(k.delete, 'date', run_date = ti)
         await asyncio.sleep()
         await client.delete_messages(message.chat.id, dl_ids)
