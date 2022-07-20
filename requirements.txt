@@ -2,6 +2,7 @@
 git+https://github.com/subinps/pyrogram@inline-m
 TgCrypto
 Pyromod
+apscheduler
 # --- For-Database ------------ #
 sqlalchemy~=1.3.23
 psycopg2-binary
