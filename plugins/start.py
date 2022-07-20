@@ -25,7 +25,7 @@ scheduler = AsyncIOScheduler()
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
-    global time
+    global ti
     id = message.from_user.id
     user_name = '@' + message.from_user.username if message.from_user.username else None
     try:
@@ -89,10 +89,10 @@ async def start_command(client: Client, message: Message):
                 await asyncio.sleep(e.x)
                 k=await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
                 dl_ids.append(k.id)
-                time = datetime.now() + timedelta(seconds = 10)
             except:
                 pass
-            scheduler.add_job(k.delete, 'date', run_date = time)
+                ti = datetime.now() + timedelta(seconds = 10)
+                scheduler.add_job(k.delete, 'date', run_date = ti)
         await asyncio.sleep()
         await client.delete_messages(message.chat.id, dl_ids)
         return
