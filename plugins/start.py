@@ -92,9 +92,9 @@ async def start_command(client: Client, message: Message):
             except:
                 pass
                 ti = datetime.now() + timedelta(seconds = 1800)
-                scheduler.add_job(k.delete(), 'date', run_date = ti)
-        await asyncio.sleep()
-        await client.delete_messages(message.chat.id, dl_ids)
+                scheduler.add_job(k.delete, 'date', run_date = ti)
+    #    await asyncio.sleep()
+    #    await client.delete_messages(message.chat.id, dl_ids)
         return
     else:
         reply_markup = InlineKeyboardMarkup(
