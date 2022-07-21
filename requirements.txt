@@ -1,5 +1,6 @@
 # --- For-Bot-Working --------- #
-git+https://github.com/subinps/pyrogram@inline-m
+#git+https://github.com/subinps/pyrogram@inline-m
+pyrogram == 1.4.16
 TgCrypto
 Pyromod
 apscheduler
